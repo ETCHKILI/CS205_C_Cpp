@@ -21,7 +21,7 @@ int main()
     cout << "The information you enter is:" << endl;
     cout << "name: " << first_name << ", " << last_name << endl;
     cout << "Grade: " << grade << endl;
-    cout << "Age: " << age << endl;    
+    cout << "Age: " << age << endl;
 
     return 0;
 }

@@ -1,0 +1,10 @@
+
+#IDEA
+.idea/
+
+#vscode
+.vscode/
+
+#acm source code without executable files 
+*.exe
+
