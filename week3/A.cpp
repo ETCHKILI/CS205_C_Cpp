@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main()
@@ -8,7 +9,9 @@ int main()
 
     cout << "What is your first name? ";
     cin.getline(first_name,20);
-    
+//    string line;
+//    getline(cin, line);
+
     cout << "What is your last name? ";
     cin >> last_name;
 
