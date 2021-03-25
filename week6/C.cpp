@@ -5,14 +5,14 @@ using namespace std;
 int Fill_array(double arr[], int size) {
     int i;
     for (i = 0; i < size; ++i) {
-        cout << "Number #" << (i + 1) << ":";
+        cout << "Number #" << (i + 1) << ":\n";
         cin >> arr[i];
         if (!cin) {
             break;
         }
     }
 
-    return (i + 1);
+    return (i);
 }
 void Show_array(double *arr, int size) {
     for (int i = 0; i < size; ++i) {
@@ -21,17 +21,20 @@ void Show_array(double *arr, int size) {
     cout << '\n';
 
 }
-void swap(double *arr, int a, int b) {
-    double c = arr[a];
-    arr[a] = arr[b];
-    arr[b] = c;
+void swap(double *arr, double* end) {
+    double c = *arr;
+    *arr = *end;
+    *end = c;
 }
 void Reverse_array(double *arr, int size) {
-    for (int i = 0; i < size / 2; ++i) {
-        swap(arr, i, size - 1 - i);
+    if (size == 0 || size == 1) {
+        return;
     }
 
+    swap(arr, arr + size - 1);
+    Reverse_array(arr + 1, size - 2);
 }
+
 
 int main() {
     cout << "Enter the size of array:";
@@ -55,4 +58,6 @@ int main() {
         --arr;
         Show_array(arr, n);
     }
+
+    delete [] arr;
 }

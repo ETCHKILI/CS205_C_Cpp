@@ -59,7 +59,9 @@ int main() {
             case 5:
                 cout << "Result: " << Add(a, b) << '\n';
                 break;
-
+            default:
+                cout << "Invalid input!\n";
+                break;
         }
         cout << "Press y or Y to continue:";
         cin >> confirm;
