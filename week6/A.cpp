@@ -48,16 +48,16 @@ int main() {
                 cout << "Result: " << Add(a, b) << '\n';
                 break;
             case 2:
-                cout << "Result: " << Add(a, b) << '\n';
+                cout << "Result: " << Subtract(a, b) << '\n';
                 break;
             case 3:
-                cout << "Result: " << Add(a, b) << '\n';
+                cout << "Result: " << Multiply(a, b) << '\n';
                 break;
             case 4:
-                cout << "Result: " << Add(a, b) << '\n';
+                cout << "Result: " << Divide(a, b) << '\n';
                 break;
             case 5:
-                cout << "Result: " << Add(a, b) << '\n';
+                cout << "Result: " << Modulus(a, b) << '\n';
                 break;
             default:
                 cout << "Invalid input!\n";
