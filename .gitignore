@@ -12,4 +12,6 @@
 cmake-build-debug/
 CMakeLists.txt
 
+test.cpp
+
 
