@@ -7,11 +7,14 @@
 
 #acm source code without executable files 
 *.exe
+*.o
 
 #cmake(acm codes don't need the cmake files)
 cmake-build-debug/
+cmake-build-release/
 CMakeLists.txt
 
 test.cpp
+test/
 
 
