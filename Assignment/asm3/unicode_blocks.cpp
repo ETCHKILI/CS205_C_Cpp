@@ -32,22 +32,17 @@ void LoadUnicodeFile(const string& src, vector<Block> &blocks);
 // convert line to a Block
 Block LineToBlock(string s);
 
-// Read the file input by user, count the blocks
-void ReadFileAndCount(const string& src, vector<Block> &blocks, int* bk_cnt);
+// Read the file from std input, count the blocks
+void ReadFileAndCount(vector<Block> &blocks, int* bk_cnt);
 
 // Search the code in blocks one by one
 int Search(unsigned int code, vector<Block> &blocks);
 
-// Output the error message, and exit.
-void quit();
-
 int main() {
-    string src;
-    std::cin >> src;
     vector<Block> blocks;
     LoadUnicodeFile("Blocks.txt", blocks);
     auto bk_cnt = new int[blocks.size()]{0};
-    ReadFileAndCount(src, blocks, bk_cnt);
+    ReadFileAndCount(blocks, bk_cnt);
 
     string name_max;
     int max = 0;
@@ -59,10 +54,6 @@ int main() {
     }
 
     std::cout << name_max << '\n';
-
-    std::cout << "press enter to quit.\n";
-    std::cin.get();
-    std::cin.get();
     return 0;
 }
 
@@ -71,7 +62,7 @@ void LoadUnicodeFile(const string& src, vector<Block> &blocks) {
     std::ifstream in_file(src, std::ios_base::in);
     if (!in_file) {
         std::cout << "Blocks file missing, check \"Blocks.txt\" first\n";
-        quit();
+        exit(0);
     }
 
     string tmp_line;
@@ -101,19 +92,13 @@ Block LineToBlock(string s) {
     return block;
 }
 
-void ReadFileAndCount(const string& src, vector<Block> &blocks, int* bk_cnt) {
-    std::ifstream in_file(src, std::ios_base::in);
-    if (!in_file) {
-        std::cout << "Test file missing!\n";
-        quit();
-    }
-
+void ReadFileAndCount(vector<Block> &blocks, int* bk_cnt) {
     string file_text;
     string tmp_line;
     int bytes_in_char;
 
-    while(!in_file.eof()) {
-        std::getline(in_file, tmp_line);
+    while(!std::cin.eof()) {
+        std::getline(std::cin, tmp_line);
         file_text.append(tmp_line);
     }
 
@@ -121,8 +106,6 @@ void ReadFileAndCount(const string& src, vector<Block> &blocks, int* bk_cnt) {
         unsigned int code_point = utf8_to_codepoint(reinterpret_cast<const unsigned char *>(&file_text[i]), &bytes_in_char);
         bk_cnt[Search(code_point,blocks)]++;
     }
-
-    in_file.close();
 }
 
 int Search(unsigned int code, vector<Block> &blocks) {
@@ -134,10 +117,4 @@ int Search(unsigned int code, vector<Block> &blocks) {
     return -1;
 }
 
-void quit() {
-    std::cout << "press enter to quit.\n";
-    std::cin.get();
-    std::cin.get();
-    exit(0);
-}
 
